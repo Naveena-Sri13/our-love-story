@@ -1,0 +1,258 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>For Rohith ❤️</title>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Dancing+Script:wght@400;700&family=Quicksand:wght@300;400;600&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --blush: #fce4ec;
+            --sunset: #ffafbd;
+            --rose: #ff85a1;
+            --deep: #d4778b;
+            --cream: #fff9fa;
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; -webkit-tap-highlight-color: transparent; }
+
+        body {
+            background: linear-gradient(135deg, var(--blush), var(--sunset));
+            font-family: 'Quicksand', sans-serif;
+            color: var(--deep);
+            height: 100vh;
+            width: 100vw;
+            overflow: hidden;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        /* Particles & Celebration Overlays */
+        #canvas-overlay { position: fixed; top: 0; left: 0; width: 100%; height: 100%; pointer-events: none; z-index: 100; }
+        .bg-glow { position: fixed; width: 100%; height: 100%; background: radial-gradient(circle, rgba(255,255,255,0.4) 0%, transparent 70%); z-index: 1; pointer-events: none; }
+
+        .container { width: 100%; height: 100%; display: flex; justify-content: center; align-items: center; z-index: 10; }
+
+        .slide {
+            position: absolute;
+            width: 90%;
+            max-width: 420px;
+            height: 85vh;
+            background: rgba(255, 255, 255, 0.55);
+            backdrop-filter: blur(20px);
+            border-radius: 40px;
+            padding: 35px 25px;
+            text-align: center;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            border: 1px solid rgba(255, 255, 255, 0.8);
+            box-shadow: 0 20px 60px rgba(212, 119, 139, 0.2);
+            opacity: 0;
+            visibility: hidden;
+            transform: scale(0.98) translateY(20px);
+            transition: all 1.2s cubic-bezier(0.25, 1, 0.5, 1);
+        }
+
+        .slide.active { opacity: 1; visibility: visible; transform: scale(1) translateY(0); }
+
+        /* Typography */
+        .header-date { font-family: 'Playfair Display', serif; font-size: 0.9rem; letter-spacing: 3px; margin-bottom: 20px; color: var(--deep); }
+        .main-title { font-family: 'Playfair Display', serif; font-size: 1.8rem; font-style: italic; margin-bottom: 20px; line-height: 1.3; }
+        .story-text { font-size: 1.05rem; line-height: 1.7; color: #5a4b4e; white-space: pre-wrap; text-align: center; min-height: 100px; }
+        .pookie-name { font-family: 'Dancing Script', cursive; font-size: 2.2rem; color: var(--rose); margin-bottom: 10px; }
+
+        /* Premium Buttons */
+        .btn-container { display: flex; gap: 15px; margin-top: 30px; }
+        .pill-btn {
+            padding: 15px 30px;
+            border-radius: 50px;
+            border: none;
+            background: linear-gradient(135deg, var(--rose), var(--sunset));
+            color: white;
+            font-family: 'Playfair Display', serif;
+            font-size: 1rem;
+            font-weight: 600;
+            cursor: pointer;
+            box-shadow: 0 10px 20px rgba(255, 133, 161, 0.3);
+            transition: 0.4s;
+            animation: float 4s ease-in-out infinite;
+        }
+
+        .pill-btn:hover { transform: scale(1.05); filter: brightness(1.1); box-shadow: 0 15px 30px rgba(255, 133, 161, 0.5); }
+        .btn-playful:hover { animation: wobble 0.5s ease; }
+
+        @keyframes float { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-8px); } }
+        @keyframes wobble { 0%, 100% { transform: rotate(0); } 25% { transform: rotate(5deg); } 75% { transform: rotate(-5deg); } }
+
+        /* Final Celebration Elements */
+        .heart-rise { position: absolute; color: rgba(255, 133, 161, 0.6); animation: rise 6s linear infinite; }
+        @keyframes rise { 0% { transform: translateY(100vh) scale(0); opacity: 0; } 50% { opacity: 0.8; } 100% { transform: translateY(-10vh) scale(1.5); opacity: 0; } }
+
+        .typewriter-content { display: inline-block; }
+        .cartoon-img { width: 140px; margin-bottom: 20px; filter: drop-shadow(0 10px 10px rgba(0,0,0,0.05)); }
+        
+        #final-glow-screen {
+            position: fixed; top: 0; left: 0; width: 100%; height: 100%;
+            background: radial-gradient(circle, #fff0f3, #ffc1cc);
+            z-index: 200; display: none; flex-direction: column;
+            justify-content: center; align-items: center; text-align: center;
+        }
+    </style>
+</head>
+<body onclick="startMusic()">
+
+    <div class="bg-glow"></div>
+    <div id="canvas-overlay"></div>
+    
+    <audio id="bgMusic" loop>
+        <source src="https://www.bensound.com/bensound-music/bensound-love.mp3" type="audio/mp3">
+    </audio>
+
+    <div class="container">
+        <div class="slide active" id="slide-0">
+            <h1 class="main-title">Hey, Rohith....🩷</h1>
+            <p class="pookie-name">My cutiee pookie wookiee Handsome boy</p>
+            <img src="https://media.giphy.com/media/v1.Y2lkPTc5MGI3NjExM3NwaWJ3amFiaWp3amFiaWp3amFiaWp3amFiaWp3amFiaWp3JmVwPXYxX2ludGVybmFsX2dpZl9ieV9pZCZjdD1z/L4lvBpHFmTCmI/giphy.gif" class="cartoon-img">
+            <button class="pill-btn" onclick="nextSlide(0)">Enter My Heart 💗</button>
+        </div>
+
+        <div class="slide" id="slide-1">
+            <img src="https://media.giphy.com/media/v1.Y2lkPTc5MGI3NjExNHYxcG5oZzRscW5oZzRscW5oZzRscW5oZzRscW5oZzRscW5oZyZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9cw/c77v6P27H79F1YV8Wv/giphy.gif" class="cartoon-img">
+            <div class="story-text" id="type-intro"></div>
+            <button class="pill-btn" id="btn-intro" style="display:none; margin-top: 20px;" onclick="nextSlide(1)">Next Page</button>
+        </div>
+
+        <div class="slide" id="slide-2">
+            <div class="header-date">September 26, 2025.</div>
+            <div class="story-text" id="type-sept"></div>
+            <button class="pill-btn" id="btn-sept" style="display:none;" onclick="nextSlide(2)">Our Journey Begins</button>
+        </div>
+
+        <div class="slide" id="slide-3">
+            <div class="story-text" id="type-m1"></div>
+            <button class="pill-btn" id="btn-m1" style="display:none;" onclick="nextSlide(3)">Month Two</button>
+        </div>
+
+        <div class="slide" id="slide-4">
+            <div class="story-text" id="type-m2"></div>
+            <button class="pill-btn" id="btn-m2" style="display:none;" onclick="nextSlide(4)">Month Three</button>
+        </div>
+
+        <div class="slide" id="slide-5">
+            <div class="story-text" id="type-m3"></div>
+            <button class="pill-btn" id="btn-m3" style="display:none;" onclick="nextSlide(5)">December</button>
+        </div>
+
+        <div class="slide" id="slide-6">
+            <div class="story-text" id="type-dec"></div>
+            <button class="pill-btn" id="btn-dec" style="display:none;" onclick="nextSlide(6)">January</button>
+        </div>
+
+        <div class="slide" id="slide-7">
+            <div class="story-text" id="type-jan"></div>
+            <button class="pill-btn" id="btn-jan" style="display:none;" onclick="nextSlide(7)">February 14</button>
+        </div>
+
+        <div class="slide" id="slide-8">
+            <div class="header-date">February 14, 2026.</div>
+            <div class="story-text" id="type-final"></div>
+            <div class="btn-container" id="final-btns" style="display:none;">
+                <button class="pill-btn" style="background: #ff4d6d;" onclick="triggerYes()">Yes!!! 🩷</button>
+                <button class="pill-btn btn-playful" onclick="triggerYes()">Do you think you have a choice?!! 😽</button>
+            </div>
+        </div>
+    </div>
+
+    <div id="final-glow-screen">
+        <h1 class="main-title" id="celeb-msg-1" style="opacity:0; transition: 2s;">You just made me the happiest girl.</h1>
+        <h1 class="pookie-name" id="celeb-msg-2" style="opacity:0; transition: 2s; margin-top: 30px;">Forever starts now.</h1>
+        <p style="margin-top: 50px; font-style: italic;">I was always going to choose you.<br>You just had to say it first.</p>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
+    <script>
+        const scripts = {
+            intro: `“I made something for you…”\n“Not because it’s February…”\n“But because it’s you.”\n\n“These five months?”\n“They changed me.”`,
+            sept: `September 26, 2025.\n\nThat night wasn’t calm.\nIt wasn’t soft.\nIt wasn’t perfect.\n\nWe were fighting.\nWe were dramatic.\nWe were both pretending we didn’t care.\n\nAnd then you called me something that changed everything.\n\n"Pondati."\n\nWife.\n\nI acted angry.\nYou acted distant.\nBut between your questions and my tears…\n\nSomething shifted.\n\nWhen you asked me,\n"If I’m okay for you… will you be mine for a lifetime?"\n\nI didn’t answer immediately.\n\nBut inside?\n\nI already knew.`,
+            m1: `Month One — The Rain.\n\nYou weren’t broken.\nBut you were healing.\n\nAnd I didn’t want to fix you.\n\nI just wanted to sit beside you\nwhile you fixed yourself.\n\nThat month wasn’t easy.\nIt was intense.\nIt was emotional.\n\nBut it was real.\n\nAnd then came that night.\n\nDark sky.\nRain falling like it was blessing us.\nThe world quiet.\n\nAnd you.\n\nClose to me.\n\nThat first kiss wasn’t just a kiss.\n\nIt was a promise without words.`,
+            m2: `Month Two — Learning You.\n\nWe had exams.\nWe had stress.\nWe had fights that felt bigger than they were.\n\nBut between arguments and laughter,\nwe were learning each other.\n\nNot just loving.\n\nLearning.\n\nHow you think.\nHow I react.\nHow we misunderstand.\nHow we come back.\n\nThat month wasn’t soft.\n\nIt was foundation.`,
+            m3: `Month Three — Alignment.\n\nSomething changed.\n\nYou weren’t just there.\n\nYou were present.\n\nThe way you spoke to me softened.\nThe way you looked at me deepened.\n\nWe weren’t trying anymore.\n\nWe just… were.\n\nAnd it felt right.`,
+            dec: `December — Your Birthday.\n\nThat’s when I saw it clearly.\n\nThe love.\n\nNot the playful one.\nNot the dramatic one.\n\nThe real one.\n\nYour eyes said things your mouth didn’t.\n\nThat month felt warm.\n\nLike we both finally stopped running.\n\nAnd chose each other.`,
+            jan: `January — Just Us.\n\nNo chaos.\nNo confusion.\n\nJust comfort.\n\nJanuary felt peaceful.\n\nIt felt like waking up and knowing\nthis is where I belong.\n\nWith you.`,
+            final: `February 14, 2026.\n\nWill you be my Valentine?\n\nNot just this February.\n\nBut every February 14.\n\nFor the rest of my lifetime.\n\nBecause loving you\nwas never a one-day decision.\n\nIt was a forever one.`
+        };
+
+        let currentSlideIdx = 0;
+        let isMusicPlaying = false;
+
+        function startMusic() {
+            if (!isMusicPlaying) {
+                document.getElementById('bgMusic').play();
+                isMusicPlaying = true;
+            }
+        }
+
+        function typeWriter(elementId, text, btnId, speed = 40) {
+            let i = 0;
+            const elem = document.getElementById(elementId);
+            elem.innerHTML = "";
+            function type() {
+                if (i < text.length) {
+                    elem.innerHTML += text.charAt(i);
+                    i++;
+                    setTimeout(type, speed);
+                } else {
+                    document.getElementById(btnId).style.display = "inline-block";
+                    document.getElementById(btnId).style.opacity = 1;
+                }
+            }
+            type();
+        }
+
+        function nextSlide(num) {
+            document.getElementById(`slide-${num}`).classList.remove('active');
+            const next = num + 1;
+            document.getElementById(`slide-${next}`).classList.add('active');
+
+            if (next === 1) typeWriter('type-intro', scripts.intro, 'btn-intro');
+            if (next === 2) typeWriter('type-sept', scripts.sept, 'btn-sept');
+            if (next === 3) typeWriter('type-m1', scripts.m1, 'btn-m1');
+            if (next === 4) typeWriter('type-m2', scripts.m2, 'btn-m2');
+            if (next === 5) typeWriter('type-m3', scripts.m3, 'btn-m3');
+            if (next === 6) typeWriter('type-dec', scripts.dec, 'btn-dec');
+            if (next === 7) typeWriter('type-jan', scripts.jan, 'btn-jan');
+            if (next === 8) typeWriter('type-final', scripts.final, 'final-btns');
+        }
+
+        function triggerYes() {
+            const screen = document.getElementById('final-glow-screen');
+            screen.style.display = 'flex';
+            
+            // Celebration Logic
+            confetti({ particleCount: 200, spread: 100, origin: { y: 0.6 } });
+            
+            // Heart Rise Animation
+            setInterval(() => {
+                const heart = document.createElement('div');
+                heart.className = 'heart-rise';
+                heart.innerHTML = '🩷';
+                heart.style.left = Math.random() * 100 + 'vw';
+                heart.style.fontSize = (Math.random() * 20 + 10) + 'px';
+                heart.style.animationDuration = (Math.random() * 3 + 4) + 's';
+                document.body.appendChild(heart);
+                setTimeout(() => heart.remove(), 6000);
+            }, 300);
+
+            // Message Fades
+            setTimeout(() => { document.getElementById('celeb-msg-1').style.opacity = 1; }, 500);
+            setTimeout(() => { 
+                document.getElementById('celeb-msg-1').style.opacity = 0;
+                setTimeout(() => { document.getElementById('celeb-msg-2').style.opacity = 1; }, 1000);
+            }, 3500);
+        }
+    </script>
+</body>
+</html>
